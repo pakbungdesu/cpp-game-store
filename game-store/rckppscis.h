@@ -15,6 +15,7 @@ void greeting() {
 
 }
 
+
 void picRPS(int pic_index) {
     string rock_pic =
         "    _______\n"
@@ -44,6 +45,13 @@ void picRPS(int pic_index) {
     cout << all_pics[pic_index];
 }
 
+
+void to_lower(string& sometxt) {
+    for (auto& x : sometxt) {
+        x = tolower(x);
+    }
+}
+
 void play_RPS() {
 
     greeting();
@@ -55,15 +63,15 @@ void play_RPS() {
     string con, user_hand;
 
     cout << "\nDo you want to continue or stop? "; cin >> con;
+    to_lower(con);
+
 
     while (con != "stop") {
 
         cout << "\nRound " << i;
         cout << "\nWhat do you choose?: "; cin >> user_hand;
 
-        for (auto& x : user_hand) {
-            x = tolower(x);
-        }
+        to_lower(user_hand);
 
         if (user_hand == "rock") {
             user_num = 0;
@@ -90,8 +98,11 @@ void play_RPS() {
         total_user += user_score;
         total_bot += bot_score;
         cout << "\nDo you want to continue or stop? "; cin >> con;
+        to_lower(con);
+
         i += 1;
     }
+
     cout << "\nYour total score: " << total_user;
     cout << "\nBot' total score: " << total_bot;
 
